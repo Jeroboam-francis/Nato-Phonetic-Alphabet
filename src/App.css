@@ -9,17 +9,39 @@
   text-align: center;
   margin-top: 2rem;
 }
+
 .container h1 {
   font-size: 2rem;
 }
+
 .container h2 {
   font-size: 1rem;
   padding: 2rem 0;
 }
+
 .container textarea {
   border: 0.1rem solid orange;
   width: 50rem;
   height: 5rem;
   padding: 1rem;
   background-color: white;
+}
+
+.output {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.output span {
+  font-weight: 900;
+  margin-right: 5px;
+}
+
+.output span:nth-child(even) {
+  color: rgb(18, 17, 75);
+}
+
+.output span:nth-child(odd) {
+  color: rgb(96, 134, 7);
 }

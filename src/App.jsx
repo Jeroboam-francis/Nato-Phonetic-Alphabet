@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function App() {
   const [text, setText] = useState("");
-  const [output, setOutput] = useState("");
+  const [output, setOutput] = useState([]);
 
   const Alphabets = {
     A: "Alfa",
@@ -76,28 +76,24 @@ function App() {
     "~": "Tilde",
   };
 
-  const convertTextToNato = (text) => {
-    const userInputWords = text.split(" ");
-    const natoWords = userInputWords.map((word) => {
-      const letters = word.split("");
-      const natoAlphabetLetters = letters.map((letter) => {
-        const nato = Alphabets[letter.toUpperCase()];
-        return nato;
-      });
-      return natoAlphabetLetters.filter(Boolean).join(" ");
-    });
-    setOutput(natoWords.join(" | "));
+  const convertTextToNato = (input) => {
+    const result = input
+      .toUpperCase()
+      .split("")
+      .map((char) => Alphabets[char] || char);
+    setOutput(result.split(" "));
   };
 
   const handleTextChange = (e) => {
-    setText(e.target.value);
-    convertTextToNato(e.target.value);
+    const newText = e.target.value;
+    setText(newText);
+    convertTextToNato(newText);
   };
 
   return (
     <div className="container">
       <h1>NATO PHONETIC ALPHABET</h1>
-      <h2>CONVERT TEXT TO NATO PHONETIC ALPHABET</h2>
+      <h2>Convert Text to NATO Phonetic Alphabet</h2>
       <textarea
         placeholder="Type Your Text Here..."
         name="nato-input"
@@ -105,7 +101,11 @@ function App() {
         value={text}
         onChange={handleTextChange}
       ></textarea>
-      <div className="output">{output}</div>
+      <div className="output">
+        {output.map((word, index) => (
+          <span key={index}>{word}</span>
+        ))}
+      </div>
     </div>
   );
 }
