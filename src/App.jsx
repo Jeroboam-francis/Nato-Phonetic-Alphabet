@@ -32,6 +32,7 @@ function App() {
     X: "X-ray",
     Y: "Yankee",
     Z: "Zulu",
+
     0: "Zero",
     1: "One",
     2: "Two",
@@ -81,7 +82,7 @@ function App() {
       .toUpperCase()
       .split("")
       .map((char) => Alphabets[char] || char);
-    setOutput(result.split(" "));
+    setOutput(result);
   };
 
   const handleTextChange = (e) => {
